@@ -33,7 +33,7 @@ Additionally, you'll need a GitHub personal access token for the backend to inte
 
 ```bash
 git clone https://github.com/deshmukhpurushothaman/github-tracker.git
-cd track-github-repositories
+cd github-tracker
 ```
 
 ### 2. Backend Setup
@@ -54,6 +54,7 @@ Create a `.env` file in the `backend` folder and add your GitHub personal access
 ```bash
 GITHUB_TOKEN=your_github_personal_access_token
 DATABASE_URL=
+PORT=4000
 ```
 
 #### 2.3. Start the Backend Server
@@ -61,7 +62,7 @@ DATABASE_URL=
 To start the backend server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 This will start the server and allow it to handle requests from the frontend.

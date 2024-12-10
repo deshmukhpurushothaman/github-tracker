@@ -24,7 +24,6 @@ backend/
 ├── .env                  # Environment variables
 ├── package.json          # NPM package configuration
 ├── README.md             # Backend readme file
-└── .gitignore            # Git ignore file
 ```
 
 ## Setup Instructions
@@ -60,12 +59,12 @@ Create a `.env` file at the root of the backend directory and add the following 
 
 ```
 GITHUB_TOKEN=your_github_token
-POSTGRES_URI=your_postgres_connection_string
+DATABASE_URL=your_postgres_connection_string
 PORT=4000
 ```
 
 - **GITHUB_TOKEN**: Generate a personal access token on GitHub to authenticate API requests.
-- **POSTGRES_URI**: PostgreSQL connection URI, typically in the format `postgres://username:password@host:port/database`.
+- **DATABASE_URL**: PostgreSQL connection URI, typically in the format `postgres://username:password@host:port/database`.
 - **PORT**: Port on which the backend will run (default `PORT=4000`).
 
 ### 4. Set up PostgreSQL Database
@@ -73,6 +72,20 @@ PORT=4000
 Make sure that your PostgreSQL instance is running and the database is properly set up. You can use a tool like [pgAdmin](https://www.pgadmin.org/) to manage the database or directly use PostgreSQL CLI.
 
 You can create the necessary tables by running the database migrations or seeding scripts if available in the project.
+
+#### Pushing the schema to the database
+
+In order to set up the necessary tables in the PostgreSQL database, you need to run the schema file `database/schema.sql` that is located inside the `backend/database` folder.
+
+Run the following commands to apply the schema:
+
+```bash
+psql -h your_host -U your_username -d your_database -f backend/src/database/schema.sql
+```
+
+- Replace `your_host`, `your_username`, and `your_database` with your PostgreSQL database details.
+
+This will create the necessary tables for tracking repositories and releases.
 
 ### 5. Run the backend
 
